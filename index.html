@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam's Beauty Salon - Bridgewater, NJ</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Sam's Beauty Salon Logo" class="logo-img">
+                <span>Sam's Beauty Salon</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" onclick="showHome()">Home</a>
+                <a href="#" onclick="showServices()">Services</a>
+                <a href="#" onclick="showContact()">Contact</a>
+                <a href="#" onclick="showBooking()" id="bookingNav" class="hidden">Book Appointment</a>
+                <a href="#" onclick="showAccount()" id="accountNav" class="hidden">My Account</a>
+            </nav>
+            
+            <div class="auth-buttons">
+                <div id="loginButtons">
+                    <button class="btn btn-secondary" onclick="showLoginModal()">Login</button>
+                    <button class="btn btn-primary" onclick="showSignupModal()">Sign Up</button>
+                </div>
+                <div id="userSection" class="user-info hidden">
+                    <img src="" alt="User Avatar" class="user-avatar" id="userAvatar">
+                    <span id="userName"></span>
+                    <button class="btn btn-secondary" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div id="homePage">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to Sam's Beauty Salon</h1>
+                    <p>Your Premier Beauty Destination in Bridgewater, NJ</p>
+                    <button class="btn btn-primary" onclick="showServices()">Explore Our Services</button>
+                </div>
+            </section>
+
+            <!-- Services Preview -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title">Our Services</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h3>🧵 Threading Services</h3>
+                            <p>Professional eyebrow shaping and facial threading for the perfect look.</p>
+                            <ul class="service-list">
+                                <li>Eyebrows <span class="price">$9</span></li>
+                                <li>Full Face Threading <span class="price">$30</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h3>✂️ Hair Services</h3>
+                            <p>Complete hair care from cuts to coloring and styling.</p>
+                            <ul class="service-list">
+                                <li>Women's Haircut <span class="price">$30</span></li>
+                                <li>Full Highlights <span class="price">$220+</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h3>🕯️ Wax Services</h3>
+                            <p>Smooth, professional waxing services for all your needs.</p>
+                            <ul class="service-list">
+                                <li>Full Legs <span class="price">$45</span></li>
+                                <li>Brazilian Wax <span class="price">$50+</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h3>✨ Facial Services</h3>
+                            <p>Rejuvenating facial treatments for healthy, glowing skin.</p>
+                            <ul class="service-list">
+                                <li>Shehnaz Diamond <span class="price">$65</span></li>
+                                <li>Shira Facial <span class="price">$80</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="section about-section">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>About Sam's Beauty Salon</h2>
+                            <p>Located in the heart of Bridgewater, Sam's Beauty Salon has been serving the community with exceptional beauty services. Our experienced professionals are dedicated to helping you look and feel your best.</p>
+                            <p>We offer a wide range of services including threading, hair care, waxing, facials, and kids' services in a clean, welcoming environment.</p>
+                            <p><strong>Please note:</strong> Our website is for browsing and booking appointments only. All payments are made in person at our salon.</p>
+                        </div>
+                        
+                        <div class="hours-card">
+                            <h3>Store Hours</h3>
+                            <ul class="hours-list">
+                                <li>Monday <span>10 AM – 7 PM</span></li>
+                                <li>Tuesday <span>10 AM – 7 PM</span></li>
+                                <li>Wednesday <span>10 AM – 7 PM</span></li>
+                                <li>Thursday <span>10 AM – 7 PM</span></li>
+                                <li>Friday <span>10 AM – 7 PM</span></li>
+                                <li>Saturday <span>10 AM – 6 PM</span></li>
+                                <li>Sunday <span>10 AM – 4 PM</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Page -->
+        <div id="servicesPage" class="hidden">
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title">Our Complete Services Menu</h2>
+                    
+                    <div class="services-grid">
+                        <!-- Threading Services -->
+                        <div class="service-card">
+                            <h3>🧵 Threading Services</h3>
+                            <ul class="service-list">
+                                <li>Eyebrows <span class="price">$9</span></li>
+                                <li>Upper Lip <span class="price">$3</span></li>
+                                <li>Lower Lip <span class="price">$2</span></li>
+                                <li>Forehead <span class="price">$4</span></li>
+                                <li>Chin <span class="price">$5</span></li>
+                                <li>Side Burns <span class="price">$8</span></li>
+                                <li>Full Face Threading <span class="price">$30</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Hair Services -->
+                        <div class="service-card">
+                            <h3>✂️ Hair Services</h3>
+                            <ul class="service-list">
+                                <li>Women's Haircut <span class="price">$30</span></li>
+                                <li>Men's Haircut <span class="price">$25</span></li>
+                                <li>Blow Dry <span class="price">$45+</span></li>
+                                <li>Full Women's Hair Color <span class="price">$75+</span></li>
+                                <li>Men's Hair Color <span class="price">$50</span></li>
+                                <li>Root Touch-Up <span class="price">$65</span></li>
+                                <li>Partial Highlights <span class="price">$160</span></li>
+                                <li>Full Hair Highlights <span class="price">$220+</span></li>
+                                <li>Toner/Glaze <span class="price">$60</span></li>
+                                <li>Curls <span class="price">$65+</span></li>
+                                <li>Hair Henna <span class="price">$30+</span></li>
+                                <li>Oil Massage <span class="price">$30+</span></li>
+                                <li>Only Clean Wash <span class="price">$10</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Wax Services -->
+                        <div class="service-card">
+                            <h3>🕯️ Wax Services</h3>
+                            <ul class="service-list">
+                                <li>Full Arms Wax <span class="price">$25</span></li>
+                                <li>Full Legs Wax <span class="price">$45</span></li>
+                                <li>UnderArms <span class="price">$10</span></li>
+                                <li>Brazilian Wax <span class="price">$50+</span></li>
+                                <li>Half Leg Wax <span class="price">$25</span></li>
+                                <li>Bikini Wax <span class="price">$35</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Facial Services -->
+                        <div class="service-card">
+                            <h3>✨ Facial Services</h3>
+                            <ul class="service-list">
+                                <li>Shehnaz Diamond <span class="price">$65</span></li>
+                                <li>O3 Facial <span class="price">$70</span></li>
+                                <li>Shira Facial <span class="price">$80</span></li>
+                                <li>Mini Face Polish <span class="price">$40</span></li>
+                                <li>Magic Face Pack <span class="price">$20</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Kids Hair Services -->
+                        <div class="service-card">
+                            <h3>👶 Kids Hair Services</h3>
+                            <ul class="service-list">
+                                <li>Boys Haircut <span class="price">$20</span></li>
+                                <li>Girls Haircut <span class="price">$25</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <p style="font-style: italic; color: #666; margin-bottom: 2rem;">All services are paid for in person at our salon. Online booking is for appointment scheduling only.</p>
+                        <button class="btn btn-primary" onclick="showLoginModal()">Book Your Appointment</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contactPage" class="hidden">
+            <section class="section contact-section">
+                <div class="container">
+                    <h2 class="section-title">Contact Us</h2>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <i>📍</i>
+                            <h3>Location</h3>
+                            <p>1323 Prince Rodgers Ave<br>Bridgewater, NJ 08807</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <i>📞</i>
+                            <h3>Phone</h3>
+                            <p><a href="tel:+19082109319" style="color: #e91e63; text-decoration: none;">(908) 210-9319</a></p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <i>📱</i>
+                            <h3>Instagram</h3>
+                            <p><a href="https://www.instagram.com/samsbeautysalon2024" target="_blank" style="color: #e91e63; text-decoration: none;">@samsbeautysalon2024</a></p>
+                        </div>
+                    </div>
+
+                    <div class="hours-card" style="max-width: 600px; margin: 3rem auto 0;">
+                        <h3>Store Hours</h3>
+                        <ul class="hours-list">
+                            <li>Monday <span>10 AM – 7 PM</span></li>
+                            <li>Tuesday <span>10 AM – 7 PM</span></li>
+                            <li>Wednesday <span>10 AM – 7 PM</span></li>
+                            <li>Thursday <span>10 AM – 7 PM</span></li>
+                            <li>Friday <span>10 AM – 7 PM</span></li>
+                            <li>Saturday <span>10 AM – 6 PM</span></li>
+                            <li>Sunday <span>10 AM – 4 PM</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Booking Page -->
+        <div id="bookingPage" class="hidden">
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title">Book Your Appointment</h2>
+                    
+                    <div id="newUserCoupon" class="coupon-banner hidden">
+                        <h3>🎉 Welcome! You've earned a 5% discount!</h3>
+                        <p>Use this coupon on your first booking. Mention this discount when you visit our salon.</p>
+                        <strong>Coupon Code: NEWCLIENT5</strong>
+                    </div>
+
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button class="calendar-nav" onclick="previousMonth()">&lt; Previous</button>
+                            <h3 id="currentMonth"></h3>
+                            <button class="calendar-nav" onclick="nextMonth()">Next &gt;</button>
+                        </div>
+                        
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- Calendar will be generated by JavaScript -->
+                        </div>
+                        
+                        <div id="timeSlotSection" class="hidden">
+                            <h4>Select Time (Up to 3 people can book the same time slot):</h4>
+                            <div class="time-slots" id="timeSlots">
+                                <!-- Time slots will be generated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div id="bookingForm" class="hidden">
+                            <h4>Appointment Details:</h4>
+                            <form id="appointmentForm">
+                                <div class="form-group">
+                                    <label for="clientName">Full Name:</label>
+                                    <input type="text" id="clientName" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="clientPhone">Phone Number:</label>
+                                    <input type="tel" id="clientPhone" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="selectedServices">Select Services (Hold Ctrl/Cmd for multiple):</label>
+                                    <select id="selectedServices" multiple required size="8">
+                                        <optgroup label="Threading Services">
+                                            <option value="Eyebrows - $9">Eyebrows - $9</option>
+                                            <option value="Upper Lip - $3">Upper Lip - $3</option>
+                                            <option value="Lower Lip - $2">Lower Lip - $2</option>
+                                            <option value="Forehead - $4">Forehead - $4</option>
+                                            <option value="Chin - $5">Chin - $5</option>
+                                            <option value="Side Burns - $8">Side Burns - $8</option>
+                                            <option value="Full Face Threading - $30">Full Face Threading - $30</option>
+                                        </optgroup>
+                                        <optgroup label="Hair Services">
+                                            <option value="Women's Haircut - $30">Women's Haircut - $30</option>
+                                            <option value="Men's Haircut - $25">Men's Haircut - $25</option>
+                                            <option value="Blow Dry - $45+">Blow Dry - $45+</option>
+                                            <option value="Full Women's Hair Color - $75+">Full Women's Hair Color - $75+</option>
+                                            <option value="Men's Hair Color - $50">Men's Hair Color - $50</option>
+                                            <option value="Root Touch-Up - $65">Root Touch-Up - $65</option>
+                                            <option value="Partial Highlights - $160">Partial Highlights - $160</option>
+                                            <option value="Full Hair Highlights - $220+">Full Hair Highlights - $220+</option>
+                                            <option value="Toner/Glaze - $60">Toner/Glaze - $60</option>
+                                            <option value="Curls - $65+">Curls - $65+</option>
+                                            <option value="Hair Henna - $30+">Hair Henna - $30+</option>
+                                            <option value="Oil Massage - $30+">Oil Massage - $30+</option>
+                                            <option value="Only Clean Wash - $10">Only Clean Wash - $10</option>
+                                        </optgroup>
+                                        <optgroup label="Wax Services">
+                                            <option value="Full Arms Wax - $25">Full Arms Wax - $25</option>
+                                            <option value="Full Legs Wax - $45">Full Legs Wax - $45</option>
+                                            <option value="UnderArms - $10">UnderArms - $10</option>
+                                            <option value="Brazilian Wax - $50+">Brazilian Wax - $50+</option>
+                                            <option value="Half Leg Wax - $25">Half Leg Wax - $25</option>
+                                            <option value="Bikini Wax - $35">Bikini Wax - $35</option>
+                                        </optgroup>
+                                        <optgroup label="Facial Services">
+                                            <option value="Shehnaz Diamond - $65">Shehnaz Diamond - $65</option>
+                                            <option value="O3 Facial - $70">O3 Facial - $70</option>
+                                            <option value="Shira Facial - $80">Shira Facial - $80</option>
+                                            <option value="Mini Face Polish - $40">Mini Face Polish - $40</option>
+                                            <option value="Magic Face Pack - $20">Magic Face Pack - $20</option>
+                                        </optgroup>
+                                        <optgroup label="Kids Hair Services">
+                                            <option value="Boys Haircut - $20">Boys Haircut - $20</option>
+                                            <option value="Girls Haircut - $25">Girls Haircut - $25</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                
+                                <div class="booking-summary" id="bookingSummary">
+                                    <h4>Booking Summary:</h4>
+                                    <p><strong>Date:</strong> <span id="selectedDate"></span></p>
+                                    <p><strong>Time:</strong> <span id="selectedTime"></span></p>
+                                    <p><strong>Services:</strong> <span id="summaryServices">None selected</span></p>
+                                    <p style="color: #666; font-style: italic; margin-top: 1rem;">Payment will be made in person at the salon.</p>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Book Appointment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Account Page -->
+        <div id="accountPage" class="hidden">
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title">My Account</h2>
+                    
+                    <div class="account-container">
+                        <div class="account-info">
+                            <h3>Account Information</h3>
+                            <div id="accountDetails">
+                                <!-- Account details will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="my-appointments">
+                            <h3>My Appointments</h3>
+                            <div id="userAppointments">
+                                <!-- User appointments will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="account-actions">
+                            <button class="btn btn-secondary" onclick="showChangePasswordModal()">Change Password</button>
+                            <button class="btn" style="background: #f44336; color: white;" onclick="showDeleteAccountModal()">Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="adminPage" class="hidden">
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title">Admin Dashboard</h2>
+                    
+                    <div class="admin-dashboard">
+                        <div class="admin-controls">
+                            <button class="btn btn-primary" onclick="showAdminBookingModal()">Book for Client</button>
+                            <button class="btn btn-secondary" onclick="refreshAdminData()">Refresh Data</button>
+                            <button class="btn" style="background: #ff9800; color: white;" onclick="exportBookings()">Export Bookings</button>
+                        </div>
+                        
+                        <div class="bookings-table-container">
+                            <h3>All Bookings</h3>
+                            <table class="bookings-table" id="adminBookingsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Client Name</th>
+                                        <th>Phone</th>
+                                        <th>Services</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminBookingsBody">
+                                    <!-- Bookings will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form id="loginForm">
+                <button type="button" class="google-btn" onclick="loginWithGoogle()">
+                    Sign in with Google
+                </button>
+                <div class="divider">OR</div>
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signupModal')">&times;</span>
+            <h2>Create New Account</h2>
+            <form id="signupForm">
+                <button type="button" class="google-btn" onclick="signupWithGoogle()">
+                    Sign up with Google
+                </button>
+                <div class="divider">OR</div>
+                <div class="form-group">
+                    <label for="signupName">Full Name:</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" id="signupPassword" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Booking Modal -->
+    <div id="adminBookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('adminBookingModal')">&times;</span>
+            <h2>Book Appointment for Client</h2>
+            <form id="adminBookingForm">
+                <div class="form-group">
+                    <label for="adminClientName">Client Name:</label>
+                    <input type="text" id="adminClientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminClientPhone">Phone:</label>
+                    <input type="tel" id="adminClientPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminDate">Date:</label>
+                    <input type="date" id="adminDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminTime">Time:</label>
+                    <input type="time" id="adminTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminServices">Services:</label>
+                    <textarea id="adminServices" required placeholder="List the services..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="overrideLimit"> Override 3-person limit
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('changePasswordModal')">&times;</span>
+            <h2>Change Password</h2>
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password:</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password:</label>
+                    <input type="password" id="newPassword" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password:</label>
+                    <input type="password" id="confirmPassword" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Change Password</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Account Modal -->
+    <div id="deleteAccountModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('deleteAccountModal')">&times;</span>
+            <h2>Delete Account</h2>
+            <p style="color: #f44336; margin-bottom: 2rem;">
+                <strong>Warning:</strong> This action cannot be undone. All your data and appointments will be permanently deleted.
+            </p>
+            <form id="deleteAccountForm">
+                <div class="form-group">
+                    <label for="deletePassword">Enter your password to confirm:</label>
+                    <input type="password" id="deletePassword" required>
+                </div>
+                <button type="submit" class="btn" style="background: #f44336; color: white; width: 100%;">Delete My Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sam's Beauty Salon. All rights reserved. | 1323 Prince Rodgers Ave, Bridgewater, NJ 08807 | (908) 210-9319</p>
+        </div>
+    </footer>
+
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
