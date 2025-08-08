@@ -1,0 +1,44 @@
+<svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="150" cy="100" r="90" fill="#1a1a1a" stroke="#ff6bd6" stroke-width="2"/>
+  
+  <!-- Hair silhouette -->
+  <path d="M150 40 C120 45, 110 60, 115 80 C120 85, 125 85, 130 80 C135 75, 140 70, 145 65 C150 60, 155 65, 160 70 C165 75, 170 80, 175 85 C180 85, 185 80, 180 75 C185 60, 175 45, 150 40 Z" fill="#ff6bd6"/>
+  
+  <!-- Face outline -->
+  <ellipse cx="150" cy="110" rx="25" ry="35" fill="none" stroke="#ff6bd6" stroke-width="2"/>
+  
+  <!-- Decorative elements - flowers and leaves -->
+  <!-- Flower 1 -->
+  <g transform="translate(100, 80)">
+    <circle cx="0" cy="0" r="3" fill="#ff6bd6"/>
+    <circle cx="-6" cy="-2" r="2" fill="#ff6bd6" opacity="0.8"/>
+    <circle cx="6" cy="-2" r="2" fill="#ff6bd6" opacity="0.8"/>
+    <circle cx="-3" cy="5" r="2" fill="#ff6bd6" opacity="0.8"/>
+    <circle cx="3" cy="5" r="2" fill="#ff6bd6" opacity="0.8"/>
+  </g>
+  
+  <!-- Flower 2 -->
+  <g transform="translate(200, 120)">
+    <circle cx="0" cy="0" r="3" fill="#ff6bd6"/>
+    <circle cx="-6" cy="-2" r="2" fill="#ff6bd6" opacity="0.8"/>
+    <circle cx="6" cy="-2" r="2" fill="#ff6bd6" opacity="0.8"/>
+    <circle cx="-3" cy="5" r="2" fill="#ff6bd6" opacity="0.8"/>
+    <circle cx="3" cy="5" r="2" fill="#ff6bd6" opacity="0.8"/>
+  </g>
+  
+  <!-- Leaves -->
+  <path d="M80 100 Q85 95, 90 100 Q85 105, 80 100" fill="#ff6bd6" opacity="0.6"/>
+  <path d="M210 90 Q215 85, 220 90 Q215 95, 210 90" fill="#ff6bd6" opacity="0.6"/>
+  <path d="M70 130 Q75 125, 80 130 Q75 135, 70 130" fill="#ff6bd6" opacity="0.6"/>
+  <path d="M220 130 Q225 125, 230 130 Q225 135, 220 130" fill="#ff6bd6" opacity="0.6"/>
+  
+  <!-- Additional decorative swirls -->
+  <path d="M60 110 Q70 105, 75 115 Q80 120, 70 125" fill="none" stroke="#ff6bd6" stroke-width="1.5" opacity="0.7"/>
+  <path d="M240 110 Q230 105, 225 115 Q220 120, 230 125" fill="none" stroke="#ff6bd6" stroke-width="1.5" opacity="0.7"/>
+  
+  <!-- Text -->
+  <text x="150" y="170" text-anchor="middle" fill="#ff6bd6" font-family="Arial, sans-serif" font-size="24" font-weight="bold">SAM'S</text>
+  <text x="150" y="190" text-anchor="middle" fill="#ff6bd6" font-family="Arial, sans-serif" font-size="14" font-weight="normal">BEAUTY SALON</text>
+</svg>
+

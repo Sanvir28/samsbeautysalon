@@ -1,0 +1,1632 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background-color: #000;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #111;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-logo img {
+    height: 50px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ff6b9d;
+}
+
+.nav-btn {
+    background-color: #ff6b9d;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: #ff4b7a;
+    transform: translateY(-2px);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #ff6b9d;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #ff6b9d;
+    color: #000;
+}
+
+.btn-primary:hover {
+    background-color: #ff4b7a;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #ff6b9d;
+    border: 2px solid #ff6b9d;
+}
+
+.btn-secondary:hover {
+    background-color: #ff6b9d;
+    color: #000;
+}
+
+.btn-large {
+    padding: 16px 32px;
+    font-size: 18px;
+}
+
+/* Welcome Hero Section */
+.welcome-hero {
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+    padding: 120px 0 80px;
+    margin-top: 60px;
+}
+
+.welcome-hero .container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #b0b0b0;
+    margin-bottom: 2rem;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.welcome-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+}
+
+/* Services Overview */
+.services-overview {
+    padding: 80px 0;
+    background-color: #0a0a0a;
+}
+
+.services-overview h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ff6b9d;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.service-card {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff6b9d;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.service-card p {
+    color: #b0b0b0;
+    margin-bottom: 1.5rem;
+}
+
+.service-prices {
+    list-style: none;
+    padding: 0;
+}
+
+.service-prices li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #333;
+    color: #e0e0e0;
+}
+
+.service-prices li:last-child {
+    border-bottom: none;
+}
+
+/* About Section */
+.about-section {
+    padding: 80px 0;
+    background-color: #000;
+}
+
+.about-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ff6b9d;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #b0b0b0;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+}
+
+/* Store Hours */
+.store-hours {
+    padding: 80px 0;
+    background-color: #0a0a0a;
+}
+
+.store-hours h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ff6b9d;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.hours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hour-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.hour-item .day {
+    font-weight: 600;
+    color: #e0e0e0;
+}
+
+.hour-item .time {
+    color: #ff6b9d;
+    font-weight: 500;
+}
+
+/* Complete Services */
+.complete-services {
+    padding: 80px 0;
+    background-color: #000;
+}
+
+.complete-services h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ff6b9d;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.services-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.category {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.category h3 {
+    color: #ff6b9d;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+}
+
+.service-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #333;
+    color: #e0e0e0;
+}
+
+.service-list li:last-child {
+    border-bottom: none;
+}
+
+.service-list li span:last-child {
+    color: #ff6b9d;
+    font-weight: 600;
+}
+
+.payment-note {
+    text-align: center;
+    font-style: italic;
+    color: #b0b0b0;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.cta-section {
+    text-align: center;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 80px 0;
+    background-color: #0a0a0a;
+}
+
+.contact-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ff6b9d;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.contact-item {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.contact-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contact-item h3 {
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.contact-item p {
+    color: #e0e0e0;
+}
+
+.contact-item a {
+    color: #ff6b9d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #ff4b7a;
+}
+
+.store-hours-contact {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.store-hours-contact h3 {
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.hours-simple p {
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #111;
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+.footer p {
+    color: #b0b0b0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: #111;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        margin: 1rem 0;
+    }
+
+    .welcome-hero .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-categories {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hours-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .service-card,
+    .category,
+    .contact-item {
+        padding: 1.5rem;
+    }
+}
+
+/* Auth Forms */
+.auth-container {
+    max-width: 400px;
+    margin: 120px auto 40px;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.auth-form {
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #000;
+    color: #e0e0e0;
+    font-size: 16px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ff6b9d;
+    box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.2);
+}
+
+.btn-google {
+    background-color: #4285f4;
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-google:hover {
+    background-color: #3367d6;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+table th {
+    background-color: #ff6b9d;
+    color: #000;
+    font-weight: 600;
+}
+
+table td {
+    color: #e0e0e0;
+}
+
+table tr:hover {
+    background-color: #2a2a2a;
+}
+
+/* Calendar Styles */
+.calendar-container {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid #333;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.calendar-nav {
+    background: none;
+    border: none;
+    color: #ff6b9d;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.calendar-nav:hover {
+    background-color: #333;
+}
+
+.calendar-title {
+    color: #e0e0e0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.calendar-day {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #e0e0e0;
+    border: none;
+    font-size: 16px;
+}
+
+.calendar-day:hover {
+    background-color: #333;
+}
+
+.calendar-day.selected {
+    background-color: #ff6b9d;
+    color: #000;
+}
+
+.calendar-day.disabled {
+    color: #666;
+    cursor: not-allowed;
+}
+
+.calendar-day.other-month {
+    color: #666;
+}
+
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.time-slot {
+    padding: 0.75rem;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #e0e0e0;
+}
+
+.time-slot:hover {
+    border-color: #ff6b9d;
+    background-color: #333;
+}
+
+.time-slot.selected {
+    background-color: #ff6b9d;
+    color: #000;
+    border-color: #ff6b9d;
+}
+
+.time-slot.unavailable {
+    background-color: #333;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+    padding: 120px 0 80px;
+    margin-top: 70px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.page-header p {
+    font-size: 1.25rem;
+    color: #b0b0b0;
+}
+
+/* Contact Form Styles */
+.contact-form-section {
+    padding: 80px 0;
+    background-color: #000;
+}
+
+.contact-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #1a1a1a;
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.contact-form-container h2 {
+    text-align: center;
+    color: #ff6b9d;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.contact-form {
+    margin-bottom: 2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #000;
+    color: #e0e0e0;
+    font-size: 16px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff6b9d;
+    box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.2);
+}
+
+.form-status {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    display: none;
+}
+
+.form-status.success {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border: 1px solid #28a745;
+    display: block;
+}
+
+.form-status.error {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    display: block;
+}
+
+/* Auth Modal */
+.auth-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.auth-modal-content {
+    background-color: #1a1a1a;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid #333;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+
+.auth-close {
+    color: #ff6b9d;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.auth-close:hover {
+    color: #ff4b7a;
+}
+
+.auth-title {
+    color: #ff6b9d;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 1rem;
+    color: #b0b0b0;
+}
+
+.auth-switch a {
+    color: #ff6b9d;
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    color: #ff4b7a;
+    text-decoration: underline;
+}
+
+/* Google Sign-in Button */
+.btn-google {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-google:hover {
+    background-color: #3367d6;
+}
+
+/* Services Page Styles */
+.complete-services {
+    background-color: #000;
+    padding: 80px 0;
+}
+
+.services-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.category {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.category h3 {
+    color: #ff6b9d;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.service-list {
+    list-style: none;
+}
+
+.service-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #333;
+    color: #e0e0e0;
+}
+
+.service-list li:last-child {
+    border-bottom: none;
+}
+
+.service-list li span:last-child {
+    color: #ff6b9d;
+    font-weight: 600;
+}
+
+.payment-note {
+    text-align: center;
+    color: #b0b0b0;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.cta-section {
+    text-align: center;
+}
+
+/* Store Hours */
+.store-hours {
+    background-color: #1a1a1a;
+    padding: 60px 0;
+}
+
+.store-hours h2 {
+    color: #ff6b9d;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.hours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hour-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #000;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.hour-item .day {
+    color: #e0e0e0;
+    font-weight: 600;
+}
+
+.hour-item .time {
+    color: #ff6b9d;
+    font-weight: 500;
+}
+
+/* Contact Page Styles */
+.contact-section {
+    background-color: #000;
+    padding: 80px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.contact-item {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.contact-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contact-item h3 {
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.contact-item p {
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.contact-item a {
+    color: #ff6b9d;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: #ff4b7a;
+    text-decoration: underline;
+}
+
+.store-hours-contact {
+    text-align: center;
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.store-hours-contact h3 {
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.hours-simple {
+    color: #e0e0e0;
+}
+
+.hours-simple p {
+    margin-bottom: 0.5rem;
+}
+
+/* Booking Styles */
+.booking-content {
+    background-color: #000;
+    padding: 80px 0;
+}
+
+.booking-form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.customer-info-section,
+.services-section,
+.calendar-section,
+.time-section {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.customer-info-section h2,
+.services-section h2,
+.calendar-section h2,
+.time-section h2 {
+    color: #ff6b9d;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.service-category {
+    margin-bottom: 2rem;
+}
+
+.service-category h3 {
+    color: #ff6b9d;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.service-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.5rem;
+}
+
+.service-options label {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    color: #e0e0e0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.service-options label:hover {
+    background-color: #333;
+}
+
+.service-options input[type="checkbox"] {
+    margin-right: 0.5rem;
+    accent-color: #ff6b9d;
+}
+
+/* Calendar Styles */
+.month-calendar {
+    margin-bottom: 2rem;
+}
+
+.month-calendar h3 {
+    color: #ff6b9d;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.day-header {
+    background-color: #ff6b9d;
+    color: #000;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.day {
+    background-color: #000;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    color: #e0e0e0;
+    transition: background-color 0.3s ease;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.day:hover:not(.disabled):not(.empty) {
+    background-color: #333;
+}
+
+.day.selected {
+    background-color: #ff6b9d;
+    color: #000;
+    font-weight: 700;
+}
+
+.day.disabled {
+    background-color: #1a1a1a;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.day.empty {
+    background-color: #111;
+    cursor: default;
+}
+
+/* Time Slots */
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.time-slot {
+    background-color: #000;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    padding: 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.time-slot:hover {
+    background-color: #333;
+    border-color: #ff6b9d;
+}
+
+.time-slot.selected {
+    background-color: #ff6b9d;
+    color: #000;
+    border-color: #ff6b9d;
+    font-weight: 600;
+}
+
+/* Booking Summary */
+.booking-summary {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.booking-summary h2 {
+    color: #ff6b9d;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.selected-services,
+.selected-datetime {
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.total-cost {
+    color: #ff6b9d;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #333;
+}
+
+.book-section {
+    text-align: center;
+}
+
+.payment-note {
+    color: #b0b0b0;
+    font-style: italic;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Admin Dashboard Styles */
+.admin-login {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+}
+
+.login-container {
+    background-color: #1a1a1a;
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-container h2 {
+    color: #ff6b9d;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.admin-content {
+    background-color: #000;
+    padding: 80px 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: #ff6b9d;
+}
+
+.stat-info h3 {
+    color: #ff6b9d;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.stat-info p {
+    color: #e0e0e0;
+    margin: 0;
+}
+
+.admin-filters {
+    background-color: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    color: #e0e0e0;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.appointments-section,
+.messages-section {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+    margin-bottom: 2rem;
+}
+
+.appointments-section h2,
+.messages-section h2 {
+    color: #ff6b9d;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.appointments-table th {
+    background-color: #ff6b9d;
+    color: #000;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.appointments-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+    color: #e0e0e0;
+    vertical-align: top;
+}
+
+.appointments-table tr:last-child td {
+    border-bottom: none;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-confirmed {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+.status-completed {
+    background-color: rgba(23, 162, 184, 0.2);
+    color: #17a2b8;
+    border: 1px solid #17a2b8;
+}
+
+.status-cancelled {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.btn-small {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    margin: 0 0.25rem;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.message-card {
+    background-color: #000;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    margin-bottom: 1rem;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.message-header h4 {
+    color: #ff6b9d;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.message-time {
+    color: #b0b0b0;
+    font-size: 0.8rem;
+}
+
+.message-info {
+    margin-bottom: 1rem;
+}
+
+.message-info p {
+    color: #e0e0e0;
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+}
+
+.message-content {
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* Responsive Design for Forms */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form-container {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+    
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .auth-modal-content {
+        margin: 20% auto;
+        padding: 1.5rem;
+    }
+    
+    .services-categories {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .hours-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .time-slots {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .appointments-table {
+        font-size: 0.8rem;
+    }
+    
+    .appointments-table th,
+    .appointments-table td {
+        padding: 0.5rem;
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 0.5rem;
+}
+
+.success {
+    color: #28a745;
+    font-size: 14px;
+    margin-top: 0.5rem;
+}
+
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}

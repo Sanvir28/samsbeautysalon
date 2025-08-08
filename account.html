@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Management - Sam's Beauty Salon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="Sam's Beauty Salon" class="logo">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="booking.html" class="nav-link">Book Appointment</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="account.html" class="nav-link active" id="account-link">Account</a></li>
+                <li><button class="nav-btn" id="auth-btn">Sign In</button></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Account Management</h1>
+            <p>Manage your profile and appointments</p>
+        </div>
+    </section>
+
+    <!-- Account Content -->
+    <section class="account-content">
+        <div class="container">
+            <div id="login-required" class="login-required">
+                <div class="login-box">
+                    <i class="fas fa-user-lock"></i>
+                    <h2>Please Sign In</h2>
+                    <p>You need to be signed in to access your account</p>
+                    <button class="btn btn-primary" onclick="showAuthModal()">Sign In</button>
+                </div>
+            </div>
+
+            <div id="account-dashboard" class="account-dashboard" style="display: none;">
+                <!-- User Profile -->
+                <div class="account-section">
+                    <h2><i class="fas fa-user"></i> Profile Information</h2>
+                    <div class="profile-info">
+                        <div class="profile-item">
+                            <label>Email:</label>
+                            <span id="user-email"></span>
+                        </div>
+                        <div class="profile-item">
+                            <label>Member Since:</label>
+                            <span id="member-since"></span>
+                        </div>
+                        <div class="profile-item">
+                            <label>Account Type:</label>
+                            <span id="account-type">Regular User</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coupons -->
+                <div class="account-section">
+                    <h2><i class="fas fa-gift"></i> Your Coupons</h2>
+                    <div id="coupons-list" class="coupons-list">
+                        <!-- Coupons will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Appointments -->
+                <div class="account-section">
+                    <h2><i class="fas fa-calendar-alt"></i> Your Appointments</h2>
+                    <div id="appointments-list" class="appointments-list">
+                        <!-- Appointments will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Account Actions -->
+                <div class="account-section">
+                    <h2><i class="fas fa-cog"></i> Account Actions</h2>
+                    <div class="account-actions">
+                        <button class="btn btn-secondary" onclick="signOut()">
+                            <i class="fas fa-sign-out-alt"></i> Sign Out
+                        </button>
+                        <button class="btn btn-danger" onclick="deleteAccount()">
+                            <i class="fas fa-trash"></i> Delete Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="assets/logo.svg" alt="Sam's Beauty Salon" class="footer-logo">
+                    <p>Professional beauty services in Bridgewater, NJ</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 1323 Prince Rodgers Ave, Bridgewater, NJ 08807</p>
+                    <p><i class="fas fa-phone"></i> (908) 210-9319</p>
+                    <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/samsbeautysalon2024" target="_blank">@samsbeautysalon2024</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Book Appointment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sam's Beauty Salon. All rights reserved.</p>
+                <p><strong>Note:</strong> This website is for appointment booking only. All bookings will be confirmed via phone call.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="auth-title">Sign In</h2>
+            <form id="auth-form">
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="auth-submit">Sign In</button>
+            </form>
+            <button class="btn btn-google" id="google-signin">
+                <i class="fab fa-google"></i> Sign in with Google
+            </button>
+            <p class="auth-switch">
+                <span id="auth-switch-text">Don't have an account?</span>
+                <a href="#" id="auth-switch-link">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Load account data when user is authenticated
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                document.getElementById('login-required').style.display = 'none';
+                document.getElementById('account-dashboard').style.display = 'block';
+                loadAccountData(user);
+            } else {
+                document.getElementById('login-required').style.display = 'block';
+                document.getElementById('account-dashboard').style.display = 'none';
+            }
+        });
+
+        function loadAccountData(user) {
+            // Load profile info
+            document.getElementById('user-email').textContent = user.email;
+            document.getElementById('member-since').textContent = user.metadata.creationTime 
+                ? new Date(user.metadata.creationTime).toLocaleDateString() 
+                : 'Unknown';
+
+            // Check if admin
+            if (user.email === 'admin@samsbeautysalon.com') {
+                document.getElementById('account-type').textContent = 'Administrator';
+            }
+
+            // Load coupons
+            loadCoupons(user.uid);
+            
+            // Load appointments
+            loadAppointments(user.uid);
+        }
+
+        function loadCoupons(userId) {
+            db.collection('users').doc(userId).collection('coupons')
+                .where('used', '==', false)
+                .get()
+                .then((querySnapshot) => {
+                    const couponsList = document.getElementById('coupons-list');
+                    couponsList.innerHTML = '';
+                    
+                    if (querySnapshot.empty) {
+                        couponsList.innerHTML = '<p>No active coupons available.</p>';
+                        return;
+                    }
+                    
+                    querySnapshot.forEach((doc) => {
+                        const coupon = doc.data();
+                        const couponElement = document.createElement('div');
+                        couponElement.className = 'coupon-item';
+                        couponElement.innerHTML = `
+                            <div class="coupon-info">
+                                <h4>${coupon.type}</h4>
+                                <p>${coupon.description}</p>
+                                <span class="coupon-discount">${coupon.discount}% OFF</span>
+                            </div>
+                            <div class="coupon-actions">
+                                <span class="coupon-code">Code: ${coupon.code}</span>
+                            </div>
+                        `;
+                        couponsList.appendChild(couponElement);
+                    });
+                })
+                .catch((error) => {
+                    console.error('Error loading coupons:', error);
+                    document.getElementById('coupons-list').innerHTML = '<p>Error loading coupons.</p>';
+                });
+        }
+
+        function loadAppointments(userId) {
+            db.collection('appointments')
+                .where('userId', '==', userId)
+                .orderBy('date', 'desc')
+                .get()
+                .then((querySnapshot) => {
+                    const appointmentsList = document.getElementById('appointments-list');
+                    appointmentsList.innerHTML = '';
+                    
+                    if (querySnapshot.empty) {
+                        appointmentsList.innerHTML = '<p>No appointments found.</p>';
+                        return;
+                    }
+                    
+                    querySnapshot.forEach((doc) => {
+                        const appointment = doc.data();
+                        const appointmentElement = document.createElement('div');
+                        appointmentElement.className = 'appointment-item';
+                        
+                        const date = new Date(appointment.date.seconds * 1000);
+                        const isPast = date < new Date();
+                        
+                        appointmentElement.innerHTML = `
+                            <div class="appointment-info">
+                                <h4>${date.toLocaleDateString()} at ${appointment.time}</h4>
+                                <p><strong>Services:</strong> ${appointment.services.map(s => s.name).join(', ')}</p>
+                                <p><strong>Total:</strong> $${appointment.total.toFixed(2)}</p>
+                                <p><strong>Status:</strong> ${appointment.status || 'Pending'}</p>
+                            </div>
+                            <div class="appointment-actions">
+                                ${!isPast && appointment.status !== 'cancelled' ? 
+                                    `<button class="btn btn-small btn-danger" onclick="cancelAppointment('${doc.id}')">Cancel</button>` : 
+                                    ''
+                                }
+                            </div>
+                        `;
+                        appointmentsList.appendChild(appointmentElement);
+                    });
+                })
+                .catch((error) => {
+                    console.error('Error loading appointments:', error);
+                    document.getElementById('appointments-list').innerHTML = '<p>Error loading appointments.</p>';
+                });
+        }
+
+        function cancelAppointment(appointmentId) {
+            if (confirm('Are you sure you want to cancel this appointment?')) {
+                db.collection('appointments').doc(appointmentId).update({
+                    status: 'cancelled',
+                    cancelledAt: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                .then(() => {
+                    alert('Appointment cancelled successfully.');
+                    loadAppointments(firebase.auth().currentUser.uid);
+                })
+                .catch((error) => {
+                    console.error('Error cancelling appointment:', error);
+                    alert('Error cancelling appointment. Please try again.');
+                });
+            }
+        }
+
+        function signOut() {
+            firebase.auth().signOut().then(() => {
+                window.location.href = 'index.html';
+            });
+        }
+
+        function deleteAccount() {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                const user = firebase.auth().currentUser;
+                const userId = user.uid;
+                
+                // Delete user data from Firestore
+                Promise.all([
+                    db.collection('users').doc(userId).delete(),
+                    db.collection('appointments').where('userId', '==', userId).get()
+                        .then(snapshot => {
+                            const batch = db.batch();
+                            snapshot.docs.forEach(doc => batch.delete(doc.ref));
+                            return batch.commit();
+                        })
+                ])
+                .then(() => {
+                    // Delete Firebase Auth account
+                    return user.delete();
+                })
+                .then(() => {
+                    alert('Account deleted successfully.');
+                    window.location.href = 'index.html';
+                })
+                .catch((error) => {
+                    console.error('Error deleting account:', error);
+                    alert('Error deleting account. Please try again.');
+                });
+            }
+        }
+    </script>
+</body>
+</html>

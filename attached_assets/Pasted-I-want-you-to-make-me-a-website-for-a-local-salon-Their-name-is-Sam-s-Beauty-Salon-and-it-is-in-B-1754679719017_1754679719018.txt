@@ -1,0 +1,68 @@
+I want you to make me a website for a local salon. Their name is "Sam's Beauty Salon" and it is in Bridgewater. Their address is 1323 Prince Rodgers Ave, Bridgewater, NJ 08807. The website theme should be black, pink, and light grey.
+Their services include:
+Section One: Threading Services
+* Eyebrows - $9
+* Upper Lip - $3
+* Lower Lip - $2
+* Forehead - $4
+* Chin - $5
+* Side Burns - $8
+* Full Face Threading - $30
+Section Two: Hair Services
+* Womans Haircut $30
+* Mens Haircut $25
+* Blow Dry $45 and up
+* Full Women’s Hair Color $75 and up
+* Mens Hair Color $50
+* Root Touch-Up $65
+* Partial Highlights $160
+* Full Hair Highlights $220 and up
+* Toner/Glaze $60
+* Curls $65 and up
+* Hair Henna $30 and up
+* Oil Massage $30 and up
+* Only Clean Wash $10
+Section 3: Wax Services
+* Full Arms Wax $25
+* Full Legs Wax $45
+* UnderArms $10
+* Brazilian Wax $50 and up
+* Half Leg Wax $25
+* Bikini Wax $35
+Section 4: Facials Services
+* Shehnaz Diamond $65
+* O3 Facial $70
+* Shira Facial $80
+* Mini Face Polish $40
+* Magic Face Pack $20
+Section 5: Kids Hair Services
+* Boys Haircut $20
+* Girls Haircut $25
+This website shouldn’t be a store. It should just be a website displaying who they are what they do and what services they provide.
+Users should be able to login/signup using firebase credentials and store all data they use on the site in a firestore database. Please tell me what and how to get the details you need to set this up. You should be able to login/signup with Google and Regular Email and Password. When you first create an account for the first time it should give you a coupon you can use on the site to give you a 5% off discount on a booking. There should be a built in admin account with credentials: user: admin pass: samsadmin (please make these credentials easy to change in the code in case i want to change them).
+There should be appointment booking with a calendar looking system with timeslots and availability based. You should be able to cancel appointments. Up to 3 people can book and appointment at the same time online. The time booking should be separated by 30 minutes each. All of these appoints should be forms asking what their name is what their phone number is and what services they want. Please note you must let the users know that the website isnt a store and everything booked will be payed in person. If you are logged into the admin account the website layout should be a bit different. It should display all bookings in a spreadsheet calendar based system. The admin account should also be able to book appointments for people and can override the 3 people per time slot if needed.
+Their store hours are: Friday 10 AM–7 PM
+Saturday 10 AM–6 PM
+Sunday 10 AM–4 PM
+Monday 10 AM–7 PM
+Tuesday 10 AM–7 PM
+Wednesday 10 AM–7 PM
+Thursday 10 AM–7 PM
+There should be a contact page:
+Their phone number: (908) 210-9319
+Thier instagram: https://www.instagram.com/samsbeautysalon2024** **Ive already provided you with their location. All images and logo can be found in the attached files.
+There should be a home page, account management page (deletion and other), booking page (for signed in members only), contact page. IVe started firestore database in test mode. Please use all images ive provided to add to the website especially logo.png which should be used as the main logo. This website should look professional.
+
+Please let me know what you need/want me to add from firebase authentication and firestore database
+
+This SHOULD BE A STATIC WEBSITE.
+
+My firebase:
+const firebaseConfig = {
+  apiKey: "AIzaSyCUGurfyk5_djQa3lZx0qq0Aq8UQA9clAY",
+  authDomain: "sams-beauty-salon.firebaseapp.com",
+  projectId: "sams-beauty-salon",
+  storageBucket: "sams-beauty-salon.firebasestorage.app",
+  messagingSenderId: "259520219442",
+  appId: "1:259520219442:web:7c3a43e90d17786456af2b"
+};
